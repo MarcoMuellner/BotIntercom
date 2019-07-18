@@ -14,7 +14,10 @@ def send_qotd_request(position_list : df, g_id : int, g_name : str):
     send_dict['guild_id'] = g_id
     send_dict['guild_name'] = g_name
     send_dict['post_source'] = qotd_post
-    r = requests.post(f'localhost:{port}',data=json.dumps(send_dict))
+    try:
+        r = requests.post(f'localhost:{port}',data=json.dumps(send_dict))
+    except:
+        pass
 
 def send_punisher_request(player_id : int, punisher_points : int , g_id : int, g_name : str):
     send_dict = {}
@@ -23,4 +26,7 @@ def send_punisher_request(player_id : int, punisher_points : int , g_id : int, g
     send_dict['guild_id'] = g_id
     send_dict['guild_name'] = g_name
     send_dict['post_source'] = punisher_post
-    r = requests.post(f'localhost:{port}',data=json.dumps(send_dict))
+    try:
+        r = requests.post(f'localhost:{port}',data=json.dumps(send_dict))
+    except:
+        pass
