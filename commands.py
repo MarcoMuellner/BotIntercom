@@ -14,13 +14,14 @@ def send_qotd_request(position_list : df, g_id : int, g_name : str):
     send_dict['guild_id'] = g_id
     send_dict['guild_name'] = g_name
     send_dict['post_source'] = qotd_post
-    r = requests.post(f'localhost:{port}',data=json.dumps(send_dict))
+    r = requests.post(f'http://localhost:{port}',data=json.dumps(send_dict))
 
-def send_punisher_request(player_id : int, punisher_points : int , g_id : int, g_name : str):
+def send_punisher_request(player_id : int, punisher_points : int , g_id : int, g_name : str,undo=False):
     send_dict = {}
     send_dict['player_id'] = player_id
     send_dict['punisher_points'] = punisher_points
     send_dict['guild_id'] = g_id
     send_dict['guild_name'] = g_name
     send_dict['post_source'] = punisher_post
-    r = requests.post(f'localhost:{port}',data=json.dumps(send_dict))
+    send_dict['undo'] = undo
+    r = requests.post(f'http://localhost:{port}',data=json.dumps(send_dict))
